@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function processArticles() {
-        // Extract unique categories
+        // categories
         articles.forEach(article => {
             categories.add(article.category);
             article.readingTime = Math.ceil(article.wordCount / 200);
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             articlesContainer.appendChild(card);
         });
 
-        // Add event listeners to new cards
+        // Add listeners to new cards
         document.querySelectorAll('.read-more').forEach(button => {
             button.addEventListener('click', function() {
                 const card = this.closest('.card');
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="btn btn-sm btn-outline-primary read-popular">Read Article</button>
         `;
 
-        // Add event listener to popular article button
+        // Add listener to pplr article 
         document.querySelector('.read-popular')?.addEventListener('click', () => {
             openArticleModal(popular.id);
         });
@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const article = articles.find(a => a.id === articleId);
         if (!article) return;
 
-        // Update views count
+        // views count
         article.views += 1;
 
-        // Update modal content
+        // update modal content
         document.getElementById('modal-title').textContent = article.title;
         document.getElementById('modal-date').textContent = formatDate(article.date);
         document.getElementById('modal-category').textContent = article.category;
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modal-reading-time').textContent = article.readingTime;
         document.getElementById('modal-content').textContent = article.content;
 
-        // Show modal
+        // modal
         const modal = new bootstrap.Modal(document.getElementById('articleModal'));
         modal.show();
 
